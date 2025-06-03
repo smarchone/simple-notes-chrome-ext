@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Minimal Notes Per Domain",
+  "version": "1.0.0",
+  "description": "A minimal, draggable, resizable, and minimizable notetaking UI injected into every webpage. Notes are saved per domain and can be exported/copied as markdown.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

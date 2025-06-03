@@ -1,0 +1,108 @@
+#minimal-notes-container {
+  position: fixed;
+  z-index: 2147483647;
+  top: 32px;
+  left: 32px;
+  width: 320px;
+  height: 220px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, sans-serif;
+  transition: box-shadow 0.2s;
+}
+#minimal-notes-container.minimized {
+  height: 36px !important;
+  min-height: 0 !important;
+  width: 180px !important;
+}
+#minimal-notes-header {
+  cursor: move;
+  background: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 8px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+#minimal-notes-title {
+  font-size: 15px;
+  color: #444;
+  font-weight: 500;
+}
+#minimal-notes-actions button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #888;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+#minimal-notes-actions button:hover {
+  background: #f2f2f2;
+  color: #222;
+}
+#minimal-notes-area {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 15px;
+  padding: 10px;
+  background: transparent;
+  color: #222;
+  border-radius: 0 0 10px 10px;
+  font-family: inherit;
+}
+#minimal-notes-resizer {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+  cursor: se-resize;
+  background: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="16" x2="16" y2="0" stroke="%23bbb" stroke-width="2"/></svg>') no-repeat center center;
+  opacity: 0.6;
+}
+#minimal-notes-container.minimized #minimal-notes-area,
+#minimal-notes-container.minimized #minimal-notes-resizer {
+  display: none;
+}
+#minimal-notes-container.mode-light {
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  border: 1px solid #e0e0e0;
+}
+#minimal-notes-container.mode-dark {
+  background: rgba(34,34,40,0.97);
+  color: #f2f2f2;
+  border: 1px solid #444;
+}
+#minimal-notes-container.mode-dark #minimal-notes-header {
+  border-bottom: 1px solid #333;
+}
+#minimal-notes-container.mode-dark #minimal-notes-title {
+  color: #eee;
+}
+#minimal-notes-container.mode-dark #minimal-notes-area {
+  background: transparent;
+  color: #f2f2f2;
+}
+#minimal-notes-container.mode-dark #minimal-notes-actions button {
+  color: #bbb;
+}
+#minimal-notes-container.mode-dark #minimal-notes-actions button:hover {
+  background: #222;
+  color: #fff;
+}
+#minimal-notes-container.mode-dark #minimal-notes-resizer {
+  background: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="16" x2="16" y2="0" stroke="%23aaa" stroke-width="2"/></svg>') no-repeat center center;
+}
