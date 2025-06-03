@@ -1,7 +1,25 @@
 // Injects the notetaking UI into the page
 (function() {
-  if (window.__minimalNotesInjected) return;
-  window.__minimalNotesInjected = true;
+  // Listen for toggle message from extension icon
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'minimal-notes-toggle') {
+      toggleMinimalNotesUI();
+    }
+  });
+
+  function toggleMinimalNotesUI() {
+    let container = document.getElementById('minimal-notes-container');
+    if (container) {
+      // Toggle visibility
+      if (container.style.display === 'none') {
+        container.style.display = '';
+      } else {
+        container.style.display = 'none';
+      }
+    } else {
+      injectMinimalNotesUI();
+    }
+  }
 
   // Helper: extension storage get/set via messaging
   function extStorageGet(key) {
@@ -44,9 +62,10 @@
   }
 
   // Create UI (async)
-  (async function() {
+  async function injectMinimalNotesUI() {
     const container = document.createElement('div');
     container.id = 'minimal-notes-container';
+    container.style.display = '';
     container.innerHTML = `
       <div id="minimal-notes-header">
         <span id="minimal-notes-title">Notes</span>
@@ -186,5 +205,5 @@
       await extStorageSet('minimal_notes_mode_' + getDomain(), isDark ? 'dark' : 'light');
       updateModeIcon();
     });
-  })();
+  }
 })();

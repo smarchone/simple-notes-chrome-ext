@@ -15,3 +15,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // async
   }
 });
+
+// Listen for extension icon click and send toggle message to content script
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: () => {
+      window.postMessage({ type: 'minimal-notes-toggle' }, '*');
+    }
+  });
+});

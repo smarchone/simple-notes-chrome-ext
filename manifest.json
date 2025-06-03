@@ -14,5 +14,8 @@
   ],
   "background": {
     "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Toggle Notes"
   }
 }
