@@ -29,11 +29,25 @@
   align-items: center;
   justify-content: space-between;
   user-select: none;
+  min-width: 0;
 }
 #minimal-notes-title {
   font-size: 15px;
   color: #444;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#minimal-notes-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+#minimal-notes-container.minimized #minimal-notes-actions {
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 #minimal-notes-actions button {
   background: none;
@@ -45,6 +59,7 @@
   padding: 2px 4px;
   border-radius: 4px;
   transition: background 0.15s;
+  white-space: nowrap;
 }
 #minimal-notes-actions button:hover {
   background: #f2f2f2;
